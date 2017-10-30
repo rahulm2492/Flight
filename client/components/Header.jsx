@@ -9,7 +9,7 @@ class Header extends React.Component {
 
   render() {
        return (
-        <h1 className='text-center'>5 Day Weather Forecast App For BuildIt</h1>
+        <h3 >Flight Search Engine</h3>
        );
   }
 }

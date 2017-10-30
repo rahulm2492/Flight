@@ -1,5 +1,5 @@
 import React from 'react';
-import WeatherUI from './WeatherUI.jsx'
+import Flights from './Flights.jsx'
 import Header from './Header.jsx'
 
 class App extends React.Component {
@@ -11,9 +11,9 @@ class App extends React.Component {
   render() {
     
     return (
-     <div className='weatherUI container'>
+     <div className='flightSearch container'>
         <Header/>
-        <WeatherUI/>
+        <Flights/>
       </div>);
   }
 }

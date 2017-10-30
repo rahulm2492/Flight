@@ -1,15 +1,30 @@
-export default function(state={id:0,val:false} , action){
+export default function(state , action)
+{
     switch (action.type) {
-    case 'CLICK_COUNT':
-      return Object.assign({},state ,{id:action.count})
-    case 'ITEMS_HAS_ERRORED':
-     return Object.assign({},state,{error:action.hasErrored, loading:false})
-    case 'ITEMS_IS_LOADING':
-     return Object.assign({},state,{loading:action.isLoading,error:false})
-    case 'ITEMS_FETCH_DATA_SUCCESS':
-     return Object.assign({},state,{data:action.data,loading:false,error:false})
-     case 'ITEM_SEARCHED' :
-     return Object.assign({},state,{data:action.data,loading:false,error:false})
+    case 'LOADING_ERROR':
+       return Object.assign({},state ,{error:action.data},{status:action.status})
+
+    case 'LOADING_DATA':
+       return Object.assign({},state ,{status:action.status})
+
+    case 'LOADED_DATA':
+       return Object.assign({},state ,{data:action.data},{status:action.status})
+
+    case 'DEPARTURE_CITY':
+      return Object.assign({},state ,{departureCity:action.val})
+
+    case 'ARRIVAL_CITY':
+     return Object.assign({},state, {arrivalCity:action.val})
+
+    case 'DEPARTURE_DATE':
+     return Object.assign({},state,{departureDate:action.val})
+
+    case 'RETURN_DATE':
+     return Object.assign({},state,{returnDate:action.val})
+
+     case 'PASSENGERS' :
+     return Object.assign({},state,{passengers:action.val})
+
     default:
       return state
 

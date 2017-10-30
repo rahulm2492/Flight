@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:./test/compiler.js --require ./test/helpers.js --require ./test/dom.js --recursive",
     "tdd": "npm test -- --watch",
-    "dev": "webpack-dev-server --port 3000 --devtool eval --progress --colors --hot --content-base dist",
+    "dev": "webpack-dev-server --port 3000  --progress --colors --hot --content-base dist",
     "build": "webpack -p",
     "deploy": "node server"
   },

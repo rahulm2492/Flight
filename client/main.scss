@@ -2,17 +2,127 @@ $width-name: max-device-width;
 $target-width: 320px;
  
  body{
-    background: url('./image1.jpg');
+   
     background-repeat: no-repeat;
     background-size:cover;
+    font-size: 16px;
     min-height: 100vh;
 
-    .weatherUI {
+    .flightSearch {
         position:relative;
+        border : 1px solid black;
+        padding: 0;
         .center-align{
             margin: 0 auto;
             float:none;
             text-align: center;
+
+        }
+        .flightForm {
+            width: 30%;
+            float: left;
+            border-top: 1px solid black;
+            padding: 1%;
+
+            .tabs
+            {
+                float: left;
+                    > div {
+                    border : 1px solid black;
+                    float: left;
+                    border-radius: 5px 5px 0 0;
+                    cursor: pointer;
+                    position: relative;
+                    padding-right: 3px;
+
+                }
+                > div:not(:first-child) {
+                    left: -3px;
+                    background-color: #fff;
+                }
+            }
+            .tabBody {
+                float: left;
+                border: 1px solid black;
+                padding-left: 3%;
+                > input {
+                    margin: 4px 0;
+                    width: 90%;
+                }
+                button {
+                    float: left;
+                    margin-bottom: 15px;
+                }
+                
+            }
+            .slider 
+                   {
+                       float: left;
+                       width: 100%;
+                       border: 1px solid black;
+                       margin-top: 10px;
+
+                    > input {
+                        display: inline-block;
+                        width: 70%;
+                        margin-top: 10px;
+                    }
+                     span {
+                         font-size: 12px;
+                         vertical-align: super;
+                     }   
+                       
+                    
+                }
+
+        }
+        .flightList {
+            width: 70%;
+            float: left;
+            border: 1px solid black;
+            > div {
+                width: 100%;
+                float:left;
+                .citiesSelected {
+                    float: left;
+                    padding: 2% 0;
+                }
+                .dateSelected {
+                    float: right;
+                    padding: 1% 0;
+
+                    p{
+                        margin: 0;
+                        padding: 0;
+                    }
+                }
+            }
+            .flightDetail {
+                border :1px solid black;
+                margin: 1%;
+                padding: 1%;
+                width:97%;
+                .flightData{
+                    float: left;
+                    width: 70%;
+                    > p{
+                        margin: 0;
+                        padding: 0;
+                        font-size: 22px;
+                        font-weight: bold;
+                   } 
+                  > :nth-child(2){
+                     float: left;
+                   }
+                   >  :nth-child(3){
+                     float: right;
+                   }
+                }
+                .bookFlight{
+                    float: right;
+                    width:30%;
+                    text-align: center;                }
+            }
 
         }
         .speechMic{

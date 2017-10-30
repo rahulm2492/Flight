@@ -16,11 +16,12 @@ console.log('Listening on port %d', server_port);
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('build'));
 }
+app.get('/set', (req, res) => {
+	console.log(req.body);
+  res.sendFile(path.resolve(__dirname, 'client', 'mock-data', 'index.json'));
+});
 app.get('*', (req, res) => {
+  console.log('bnvvn', req);
   res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
 
-app.post('/set', (req, res) => {
-	console.log(req.body);
-	res.send("ok");
-});
