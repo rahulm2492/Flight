@@ -10,6 +10,7 @@ class TabBody extends React.Component {
     super(props);
     this.getDepatureDate = this.getDepatureDate.bind(this);
     this.getReturnDate = this.getReturnDate.bind(this);
+    
     this.state = {
       departureDate :'',
       returnDate :'',
@@ -36,13 +37,29 @@ class TabBody extends React.Component {
     departureDate : e.target.value ,
     disabledReturnBox: !e.target.value
   });
-  this.props.onDepartureDateSet(e);
+  e.target.value && this.props.onDepartureDateSet(this.formatDate(e.target.value));
  }
+
+
  getReturnDate(e){
  
-  this.props.onReturnDateSet(e);
+  e.target.value && this.props.onReturnDateSet(this.formatDate(e.target.value));
  }
- 
+
+ formatDate(date){
+   let someDay = new Date(date);
+   let dd = someDay.getDate();
+   let mm = someDay.getMonth()+1; 
+
+    let yyyy = someDay.getFullYear();
+    if(dd<10){
+        dd='0'+dd;
+    } 
+    if(mm<10){
+        mm='0'+mm;
+    } 
+   return dd+'/'+mm+'/'+yyyy;
+ }
   render() {
   const {onDepartureSet , onArrivalSet, onDepartureDateSet, onReturnDateSet, onPassengersSet, getData } = this.props;
        return (
@@ -89,11 +106,11 @@ const mapDispatchToProps = dispatch => {
      onArrivalSet: e => {
       dispatch(setArrivalCity(e.target.value))
      },
-     onDepartureDateSet:e =>{
-       dispatch(setDepartureDate(e.target.value))
+     onDepartureDateSet:date =>{
+       dispatch(setDepartureDate(date))
      },
-      onReturnDateSet:e =>{
-       dispatch(setReturnDate(e.target.value))
+      onReturnDateSet:date =>{
+       dispatch(setReturnDate(date))
      },
       onPassengersSet:e =>{
        dispatch(setPassengers(e.target.value))

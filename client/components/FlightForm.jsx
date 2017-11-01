@@ -34,7 +34,7 @@ class FlightForm extends React.Component {
               <div className='slider'>
                 <h4>Refine Flight Search</h4>
                 <span>1000</span>
-                <InputControl type='range'  min={1000} max={10000} step={1000} />
+                <InputControl type='range' onChange={this.getRange} min={1000} max={10000} step={1000} />
                 <span>10000</span>
                </div> 
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
-import FlightDetailCard from './FlightDetailCard.jsx'
+import FlightDetailCard from './FlightDetailCard.jsx';
+import {connect} from 'react-redux';
 
 class FlightList extends React.Component {
   constructor(props){
@@ -7,43 +8,63 @@ class FlightList extends React.Component {
   }
  
 
+ renderDetailCard({data}){
+   console.log(data);
+   return data && data[0] && data[0].map((flightOne)=>{
+     console.log(flightOne);
+     return data[1].length > 0 ? data[1].map((flightTwo)=>{
+        return <FlightDetailCard flightOne={flightOne} flightTwo={flightTwo}/>
+     }) : <FlightDetailCard flightOne={flightOne} />
+   })
+ }
+
   render() {
-  
-       return (
+       const {flightData} = this.props;
+       return flightData && flightData.data && flightData.data[0].length ? (
         
             <div className = 'flightList'>
             <div class='listHeader'>
               <div className='citiesSelected'>
-              <span>PUNE ></span>
-              <span>DELHI ></span>
-              <span>PUNE</span>
+              <span>{this.props.departureCity} ></span>
+              <span>{this.props.arrivalCity} </span>
+              {this.props.returnDate && <span> > {this.props.departureCity}</span>}
               </div>
               <div className='dateSelected'>
-                <span>Departure:</span>
+                <span>Departure:{this.props.departureDate}</span>
                 <p></p>
-                <span>Return:</span>
+                {this.props.returnDate && <span>Return:{this.props.returnDate}</span>}
                 <p></p>
               </div>
             </div>
-            <FlightDetailCard/>
-            <FlightDetailCard/>
-            <FlightDetailCard/>
-            <FlightDetailCard/>
-            <FlightDetailCard/>
+           {this.renderDetailCard(this.props.flightData)}
            </div> 
             
      
-       );
+       ) :null;
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    flightData : state.data,
+    departureDate : state.departureDate,
+    returnDate : state.returnDate,
+    departureCity: state.departureCity,
+    arrivalCity: state.arrivalCity
+
+  }
+}
 
 FlightList.defaultProps = {
-  tempData: '',
+  data: ''
 };
 
 FlightList.propTypes = {
-  tempData: React.PropTypes.string,
+  data: React.PropTypes.array,
+  departureDate :React.PropTypes.string,
+  returnDate : React.PropTypes.returnDate,
+  departureCity: React.PropTypes.string,
+  arrivalCity: React.PropTypes.string
 }
 
-export default FlightList;
+export default connect(mapStateToProps)(FlightList);

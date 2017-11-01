@@ -12,8 +12,8 @@ class FlightTiles extends React.Component {
     
     return (
      <div className='flightTiles'>
-         <p>AI-202</p>
-         <p>PUNE > DELHI</p>
+         <p>{this.props.flightData.flightId}</p>
+         <p>{this.props.flightData.departureCity} > {this.props.flightData.arrivalCity}</p>
          <p>Depart: 10:00 A.M</p>
          <p>Arrive: 12:00 A.M</p>
         
@@ -24,6 +24,6 @@ class FlightTiles extends React.Component {
 
 
 FlightTiles.propTypes = {
-  selectedTab: React.PropTypes.string,
+  flightData: React.PropTypes.object,
 }
 export default FlightTiles;

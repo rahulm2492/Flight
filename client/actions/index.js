@@ -53,7 +53,8 @@ return {
 
 export function getFlightData() {
     // We return a function instead of an action object
-    return (dispatch) => {
+    return (dispatch ,getState) => {
+      console.log(getState());
         dispatch(dataLoading(true));
         window.fetch('http://localhost:80/set')
         .then((response) => {
@@ -72,11 +73,29 @@ export function getFlightData() {
         })
         .then((response) => response.json())
         .then((items) => {
-            console.log(items);
-             dispatch(dataLoaded({data:items,status:false}));
+            
+             dispatch(dataLoaded({data:filter(items,getState),status:false}));
             
            
       });
     };
 }
+
+function filter(data,state){
+  const {returnDate, departureDate, departureCity, arrivalCity }   = state();
+  
+  let a=[],b=[];
+   data.forEach((item)=>{
+    if(departureDate === item.date && departureCity === item.departureCity && arrivalCity === item.arrivalCity ){
+      a.push(item);
+    }
+    if(returnDate === item.date && arrivalCity === item.departureCity && departureCity === item.arrivalCity ){
+      b.push(item);
+    }
+  });
+  return [a,b];
+
+}
+
+
 
