@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 class Tabs extends React.Component {
   constructor(props){
@@ -26,7 +26,7 @@ Tabs.defaultProps = {
 };
 
 Tabs.propTypes = {
-  onSwitch: React.PropTypes.func,
+  onSwitch: PropTypes.func,
 }
 
 export default Tabs;

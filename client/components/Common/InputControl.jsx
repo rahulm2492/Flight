@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 class InputControl extends React.Component {
   constructor(props){
@@ -15,9 +15,8 @@ class InputControl extends React.Component {
     this.props.step ? properties.step = this.props.step : null;
     const {
         type,
-        placeholder ,
+        placeHolder ,
         onChange,
-        value,
         onBlur
 
     }= this.props
@@ -25,7 +24,7 @@ class InputControl extends React.Component {
     return (
       <input 
         type={type}
-        placeholder ={placeholder}
+        placeHolder ={placeHolder}
         onChange ={onChange}
         onBlur= {onBlur}
      
@@ -38,7 +37,7 @@ class InputControl extends React.Component {
 }
 
 InputControl.defaultProps = {
-  placeholder: '',
+  placeHolder: '',
   onChange: '',
   value: '',
   min: '',
@@ -47,14 +46,14 @@ InputControl.defaultProps = {
 };
 
 InputControl.propTypes = {
-  placeHolder: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  onBlur: React.PropTypes.func,
-  value: React.PropTypes.string,
-  min: React.PropTypes.number,
-  max: React.PropTypes.number,
-  step: React.PropTypes.number,
-  type: React.PropTypes.string
+  placeHolder:PropTypes.string,
+  onChange:PropTypes.func,
+  onBlur:PropTypes.func,
+  value:PropTypes.string,
+  min:PropTypes.number,
+  max:PropTypes.number,
+  step:PropTypes.number,
+  type:PropTypes.string
 }
 
 export default InputControl;

@@ -1,7 +1,7 @@
 import React from 'react';
-import Tabs from './Tabs.jsx';
-import TabBody from './TabBody.jsx';
-import InputControl from './InputControl.jsx';
+import Tabs from '../TabComponent/Tabs.jsx';
+import TabBody from '../TabComponent/TabBody.jsx';
+import InputControl from '../common/InputControl.jsx';
 
 
 class FlightForm extends React.Component {
@@ -44,13 +44,7 @@ class FlightForm extends React.Component {
 }
 
 
-FlightForm.defaultProps = {
-  tempData: '',
-};
 
-FlightForm.propTypes = {
-  tempData: React.PropTypes.string,
-}
 
 
 export default FlightForm;

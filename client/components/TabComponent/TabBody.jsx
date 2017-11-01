@@ -1,9 +1,10 @@
 import React from 'react';
-import DateBox from './DateBox.jsx';
-import InputControl from './InputControl.jsx'
+import DateBox from '../Common/DateBox.jsx';
+import InputControl from '../Common/InputControl.jsx'
 import {connect} from 'react-redux';
-import {setDepartureCity, setArrivalCity, setDepartureDate , setReturnDate ,setPassengers, getFlightData} from '../actions';
-
+import getFlightData from '../../actions/thunkAction.js';
+import {setDepartureCity, setArrivalCity, setDepartureDate , setReturnDate ,setPassengers} from '../../actions';
+import PropTypes from 'prop-types';
 
 class TabBody extends React.Component {
   constructor(props){
@@ -67,7 +68,11 @@ class TabBody extends React.Component {
             <div className = 'tabBody'>
               <InputControl type='text' placeholder ='Enter Origin City' onBlur={onDepartureSet}/>
               <InputControl type='text' placeholder ='Enter Destination City' onBlur={onArrivalSet} />
-              <DateBox placeholder = 'Departure Date' disabled={false} onChange={this.getDepatureDate} onBlur={onDepartureDateSet}/>
+              <DateBox placeholder = 'Departure Date' 
+                      disabled={false} 
+                      onChange={this.getDepatureDate} 
+                      onBlur={onDepartureDateSet}
+              />
              { this.props.selectedTab === 'twoWay' ? <DateBox  
                   placeholder = 'Return Date' 
                   minDate={this.state.departureDate}
@@ -124,6 +129,6 @@ const mapDispatchToProps = dispatch => {
 }
 
 TabBody.propTypes = {
-  selectedTab: React.PropTypes.string,
+  selectedTab:PropTypes.string,
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TabBody);

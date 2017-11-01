@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 
 class FlightTiles extends React.Component {
@@ -24,6 +24,6 @@ class FlightTiles extends React.Component {
 
 
 FlightTiles.propTypes = {
-  flightData: React.PropTypes.object,
+  flightData: PropTypes.object,
 }
 export default FlightTiles;

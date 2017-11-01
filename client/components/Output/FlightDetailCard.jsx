@@ -1,6 +1,6 @@
 import React from 'react';
 import FlightTiles from './FlightTiles.jsx';
-
+import PropTypes from 'prop-types';
 
 class FlightDetailCard extends React.Component {
   constructor(props){
@@ -29,7 +29,7 @@ class FlightDetailCard extends React.Component {
 
 
 FlightDetailCard.propTypes = {
-  flightOne: React.PropTypes.object,
-  flightTwo: React.PropTypes.object,
+  flightOne: PropTypes.object,
+  flightTwo: PropTypes.object,
 }
 export default FlightDetailCard;

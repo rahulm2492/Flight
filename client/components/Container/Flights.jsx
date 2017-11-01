@@ -1,7 +1,6 @@
 import React from 'react';
 import FlightForm from './FlightForm.jsx';
-import FlightList from './FlightList.jsx';
-import {connect} from 'react-redux';
+import FlightList from '../Output/FlightList.jsx';
 
 
 class Flights extends React.Component {

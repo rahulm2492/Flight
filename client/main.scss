@@ -1,5 +1,7 @@
 $width-name: max-device-width;
 $target-width: 320px;
+$break-small: 600px;
+$break-large: 1200px;
  
  body{
    
@@ -24,6 +26,11 @@ $target-width: 320px;
             border-right: 1px solid black;
             border-top: 1px solid black;
             padding: 1%;
+            @media screen and (max-width: $break-small) {
+                width: 100%;
+                
+            }
+           
 
             .tabs
             {
@@ -81,6 +88,10 @@ $target-width: 320px;
             width: 70%;
             float: left;
             border: 1px solid black;
+             @media screen and (max-width: $break-small) {
+                width: 100%;
+                
+            }
             > div {
                 width: 100%;
                 float:left;

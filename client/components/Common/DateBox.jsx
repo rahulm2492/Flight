@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 
 class DateBox extends React.Component {
   constructor(props){
@@ -45,10 +45,10 @@ DateBox.defaultProps = {
 };
 
 DateBox.propTypes = {
-  placeholder: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  onChange: React.PropTypes.func,
-  minDate: React.PropTypes.string
+  placeholder: PropTypes.string,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
+  minDate: PropTypes.string
 }
 
 export default DateBox;
