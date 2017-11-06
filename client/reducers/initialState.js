@@ -3,5 +3,9 @@ export default {
     arrivalCity:'',
     departureDate:'',
     returnDate:'',
-    passengers:''
+    passengers:'',
+    tabSelected:'oneWay',
+    submitClicked:false,
+    leftRange:0,
+    rightRange:10000
 }

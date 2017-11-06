@@ -12,8 +12,8 @@ class Tabs extends React.Component {
        return (
         
             <div className = 'tabs'>
-              <div name = 'oneWay' onClick={this.props.onSwitch}>One Way</div>
-              <div name = 'twoWay' onClick={this.props.onSwitch}>Return</div>
+              <div name = 'oneWay' className = {this.props.name==='oneWay'?'selectedTab':'normalTab'}onClick={this.props.onSwitch}>One Way</div>
+              <div name = 'twoWay'  className={this.props.name==='twoWay'?'selectedTab':'normalTab'} onClick={this.props.onSwitch}>Return</div>
             </div>
      
        );
@@ -23,10 +23,12 @@ class Tabs extends React.Component {
 
 Tabs.defaultProps = {
   onSwitch: '',
+  name:'oneWay'
 };
 
 Tabs.propTypes = {
   onSwitch: PropTypes.func,
+  name :PropTypes.string
 }
 
 export default Tabs;

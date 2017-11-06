@@ -1,7 +1,7 @@
 import React from 'react';
 import FlightDetailCard from './FlightDetailCard.jsx';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+
 
 class FlightList extends React.Component {
   constructor(props){
@@ -9,50 +9,56 @@ class FlightList extends React.Component {
   }
  
 
- renderDetailCard({data}){
-   return data && data[0] && data[0].map((flightOne)=>{
-     return data[1].length > 0 ? data[1].map((flightTwo,index)=>{
-        return <FlightDetailCard key ={index}flightOne={flightOne} flightTwo={flightTwo}/>
-     }) : <FlightDetailCard key ={index} flightOne={flightOne} />
-   })
+ renderDetailCard({data}) {
+   
+  
+     if(data[0] && data[0].length) {
+        return data[0].map((flightOne,i) => {
+        return data[1].length > 0 ? data[1].map((flightTwo, i) => {
+            return <FlightDetailCard key ={i} flightOne={flightOne} flightTwo={flightTwo}/>
+        }) : <FlightDetailCard key ={i} flightOne={flightOne} />
+      })} 
+   else {
+        return data[1] && data[1].map((flightTwo,i) => {
+         
+         return <FlightDetailCard key ={i} flightTwo={flightTwo} />}
+   )}
  }
 
   render() {
        const {flightData} = this.props;
-       return flightData && flightData.data && flightData.data[0].length ? (
+       const renderData = flightData && flightData.data  && (flightData.data[0].length || flightData.data[1].length);
+       return (
         
             <div className = 'flightList'>
-            <div className='listHeader'>
+            {this.props.submitClicked && renderData ? <div className='listHeader'>
               <div className='citiesSelected'>
-              <span>{this.props.departureCity} ></span>
+              <span>{this.props.departureCity}<i className="glyphicon glyphicon-plane rotateRight"></i></span>
               <span>{this.props.arrivalCity} </span>
-              {this.props.returnDate && <span> > {this.props.departureCity}</span>}
+              
+
+              {this.props.returnDate && <span> <i className="glyphicon glyphicon-plane rotateRight"></i> {this.props.departureCity}</span>}
               </div>
               <div className='dateSelected'>
-                <span>Departure:{this.props.departureDate}</span>
+                {this.props.departureDate && <span>Departure:{this.props.departureDate}</span>}
                 
                 {this.props.returnDate && <span>Return:{this.props.returnDate}</span>}
                 
               </div>
-            </div>
-           {this.renderDetailCard(this.props.flightData)}
-           </div> 
+            </div> : <h2> So Where are you planning to FLY ?  </h2>}
+           {
+              renderData
+             ? this.renderDetailCard(this.props.flightData)
+             : (this.props.submitClicked ? <h1>OOPS...NO DATA</h1> : <h1> We are waiting for your input </h1>)
+            }
+           </div> )
             
      
-       ) :null;
+      
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    flightData : state.data,
-    departureDate : state.departureDate,
-    returnDate : state.returnDate,
-    departureCity: state.departureCity,
-    arrivalCity: state.arrivalCity
 
-  }
-}
 
 FlightList.defaultProps = {
   data: ''
@@ -64,7 +70,9 @@ FlightList.propTypes = {
   departureDate :PropTypes.string,
   returnDate : PropTypes.returnDate,
   departureCity: PropTypes.string,
-  arrivalCity: PropTypes.string
+  arrivalCity: PropTypes.string,
+  tabSelected: PropTypes.string,
+  submitClicked: PropTypes.bool
 }
 
-export default connect(mapStateToProps)(FlightList);
+export default FlightList;

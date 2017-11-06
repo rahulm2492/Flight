@@ -20,12 +20,33 @@ $break-large: 1200px;
             text-align: center;
 
         }
+        > h3 {
+            text-align: center
+        }
         .flightForm {
             width: 30%;
             float: left;
-            border-right: 1px solid black;
-            border-top: 1px solid black;
+            border-right: 1px solid red;
+            border-top: 1px solid red;
             padding: 1%;
+        
+            .handle{
+                width:15px;
+                height: 20px;
+                background-color: grey;
+                position: absolute;
+                top:-3px;
+                &:hover{
+                    cursor: pointer;
+                }
+                
+                &.right {
+                    right: 0px;
+                }
+                &.left {
+                    left: 0px;
+                }
+            }
             @media screen and (max-width: $break-small) {
                 width: 100%;
                 
@@ -39,14 +60,22 @@ $break-large: 1200px;
                     border : 1px solid black;
                     float: left;
                     border-radius: 5px 5px 0 0;
-                    cursor: pointer;
+                   
                     position: relative;
                     padding-right: 3px;
 
                 }
                 > div:not(:first-child) {
                     left: -3px;
-                    background-color: #fff;
+                   
+                }
+                .selectedTab{
+                    background-color: yellowgreen;
+                    cursor:default
+                }
+                .normalTab{
+                    background-color: white;
+                     cursor: pointer;
                 }
             }
             .tabBody {
@@ -69,16 +98,38 @@ $break-large: 1200px;
                        width: 100%;
                        border: 1px solid black;
                        margin-top: 10px;
-
+                       text-align: -webkit-center;
+                    
+                    .control{
+                        width:80%;
+                        > span{
+                            display: inline-block;
+                            float: left;
+                            margin-top:10px;
+                            
+                        }
+                        > span:nth-child(2){
+                            float: right;
+                        }
+                    }
                     > input {
                         display: inline-block;
                         width: 70%;
                         margin-top: 10px;
                     }
+                   
                      span {
                          font-size: 12px;
                          vertical-align: super;
-                     }   
+                     }
+                     .jsSlider {
+                         position: relative;
+                         width:80%;
+                         margin-left:2%;
+                         background-color:black;
+                         height: 10px;
+                         bottom:6px;
+                     }
                        
                     
                 }
@@ -92,6 +143,20 @@ $break-large: 1200px;
                 width: 100%;
                 
             }
+            .rotateRight {
+                transform: rotate(90deg);
+            }
+             .rotateLeft {
+                transform: rotate(-90deg);
+            }
+            > h2 {
+              text-align: center;
+              color: cornflowerblue;
+            }
+            > h2 :nth-child(2) {
+                color: darkgray
+            }
+            
             > div {
                 width: 100%;
                 float:left;
@@ -123,12 +188,13 @@ $break-large: 1200px;
                         font-size: 22px;
                         font-weight: bold;
                    } 
-                  > :nth-child(2){
-                     float: left;
+                   .flightOne {
+                       float: left;
                    }
-                   >  :nth-child(3){
-                     float: right;
+                   .flightTwo {
+                       float: right;
                    }
+                 
                 }
                 .bookFlight{
                     float: right;

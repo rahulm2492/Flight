@@ -9,11 +9,12 @@ class FlightTiles extends React.Component {
   }
 
   render() {
-    
+    const rotateClass = this.props.className === 'flightOne' ? 'rotateRight' :'rotateLeft'
     return (
-     <div className='flightTiles'>
+     <div className={`flightTiles ${this.props.className}`}>
+         <h5>{this.props.heading}</h5>
          <p>{this.props.flightData.flightId}</p>
-         <p>{this.props.flightData.departureCity} > {this.props.flightData.arrivalCity}</p>
+         <p>{this.props.flightData.departureCity} <i className= {`glyphicon glyphicon-plane ${rotateClass}`}></i> {this.props.flightData.arrivalCity}</p>
          <p>Depart: 10:00 A.M</p>
          <p>Arrive: 12:00 A.M</p>
         
@@ -25,5 +26,7 @@ class FlightTiles extends React.Component {
 
 FlightTiles.propTypes = {
   flightData: PropTypes.object,
+  heading: PropTypes.string,
+  className: PropTypes.string
 }
 export default FlightTiles;
