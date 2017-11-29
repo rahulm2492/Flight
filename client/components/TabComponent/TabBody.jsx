@@ -1,9 +1,6 @@
 import React from 'react';
 import DateBox from '../Common/DateBox.jsx';
 import InputControl from '../Common/InputControl.jsx'
-import {connect} from 'react-redux';
-import getFlightData from '../../actions/thunkAction.js';
-import {setDepartureCity, setArrivalCity, setDepartureDate , setReturnDate ,setPassengers} from '../../actions';
 import PropTypes from 'prop-types';
 
 class TabBody extends React.Component {
@@ -22,7 +19,7 @@ class TabBody extends React.Component {
   componentWillReceiveProps(nextProps){
    
     const returnDateVal = nextProps.selectedTab === 'twoWay' ? nextProps.returnDate : true;
-    const {departureCity , arrivalCity, departureDate, returnDate, passengers } = nextProps;
+    const {departureCity , arrivalCity, departureDate,  passengers } = nextProps;
     if(departureCity && arrivalCity && departureDate && passengers && returnDateVal){
       this.setState({
         validated:false
@@ -66,21 +63,21 @@ class TabBody extends React.Component {
        return (
         
             <div className = 'tabBody'>
-              <InputControl type='text' placeholder ='Enter Origin City' onBlur={onDepartureSet}/>
-              <InputControl type='text' placeholder ='Enter Destination City' onBlur={onArrivalSet} />
-              <DateBox placeholder = 'Departure Date' 
+              <InputControl type='text' placeHolder ='Enter Origin City' onBlur={onDepartureSet}/>
+              <InputControl type='text' placeHolder ='Enter Destination City' onBlur={onArrivalSet} />
+              <DateBox placeHolder = 'Departure Date' 
                       disabled={false} 
                       onChange={this.getDepatureDate} 
                       onBlur={onDepartureDateSet}
               />
              { this.props.selectedTab === 'twoWay' ? <DateBox  
-                  placeholder = 'Return Date' 
+                  placeHolder = 'Return Date' 
                   minDate={this.state.departureDate}
                   onChange={this.getReturnDate} 
                   onBlur={onReturnDateSet}
                   disabled = {this.state.disabledReturnBox}/> : null}
-              <InputControl type='number' min={1} max = {6}  onBlur={onPassengersSet} placeholder ='Passengers'/>
-              <button  disabled={false} onClick={getData}>Search</button>
+              <InputControl type='number' min={1} max = {6}  onBlur={onPassengersSet} placeHolder ='Passengers'/>
+              <button  disabled={this.state.validated} onClick={getData}>Search</button>
               
             </div>
      
@@ -91,44 +88,23 @@ class TabBody extends React.Component {
 
 TabBody.defaultProps = {
   selectedTab: 'oneWay',
+
 };
 
-const mapStateToProps = state => {
-  return {
-    departureCity: state.departureCity,
-    arrivalCity:state.arrivalCity,
-    departureDate:state.departureDate,
-    returnDate:state.returnDate,
-    passengers:state.passengers
-  }
-}
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onDepartureSet: e => {
-      dispatch(setDepartureCity(e.target.value))
-    },
-     onArrivalSet: e => {
-      dispatch(setArrivalCity(e.target.value))
-     },
-     onDepartureDateSet:date =>{
-       dispatch(setDepartureDate(date))
-     },
-      onReturnDateSet:date =>{
-       dispatch(setReturnDate(date))
-     },
-      onPassengersSet:e =>{
-       dispatch(setPassengers(e.target.value))
-     },
-
-     getData:() => {
-       dispatch(getFlightData())
-     }
-    
-  }
-}
 
 TabBody.propTypes = {
   selectedTab:PropTypes.string,
+  arrivalCity: PropTypes.string,
+  departureDate: PropTypes.string,
+  returnDate: PropTypes.string,
+  passengers: PropTypes.string,
+  departureCity: PropTypes.string,
+  onDepartureSet: PropTypes.func,
+  onArrivalSet: PropTypes.func,
+  onDepartureDateSet: PropTypes.func,
+  onReturnDateSet: PropTypes.func,
+  onPassengersSet: PropTypes.func,
+  getData: PropTypes.func,
 }
-export default connect(mapStateToProps, mapDispatchToProps)(TabBody);
+export default TabBody;

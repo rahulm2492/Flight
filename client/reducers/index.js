@@ -1,5 +1,7 @@
-export default function(state , action)
+import initialState from './initialState.js';
+export default function(state=initialState , action)
 {
+  
     switch (action.type) {
     case 'LOADING_ERROR':
        return Object.assign({},state ,{error:action.data},{status:action.status})
@@ -24,6 +26,18 @@ export default function(state , action)
 
      case 'PASSENGERS' :
      return Object.assign({},state,{passengers:action.val})
+
+     case 'SET_TAB' :
+     return Object.assign({},state, {tabSelected:action.val})
+
+     case 'FILTER' :
+     return Object.assign({},state, {data:action.items})
+
+      case 'SUBMIT' :
+     return Object.assign({},state, {submitClicked:action.val})
+
+     case 'RANGE' :
+     return Object.assign({},state, {leftRange:action.val[1]}, {rightRange:action.val[0]})
 
     default:
       return state

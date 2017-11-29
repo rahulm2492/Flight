@@ -14,8 +14,8 @@ class FlightDetailCard extends React.Component {
      <div className='flightDetail'>
          <div className = 'flightData'>
             <p className='priceTag'> Rs. 9000</p>
-           {this.props.flightOne && <FlightTiles flightData={this.props.flightOne}/>}
-           {this.props.flightTwo && <FlightTiles flightData={this.props.flightTwo}/>}
+           {this.props.flightOne && <FlightTiles heading='TO' className ='flightOne' flightData={this.props.flightOne}/>}
+           {this.props.flightTwo && <FlightTiles heading='FROM' className ='flightTwo' flightData={this.props.flightTwo}/>}
          </div>
          <div className='bookFlight'>
             <img/>

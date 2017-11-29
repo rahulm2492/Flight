@@ -24,7 +24,7 @@ class DateBox extends React.Component {
              <input 
               disabled={this.props.disabled}
               type = {this.state.type}
-              placeholder={this.props.placeholder}
+              placeholder={this.props.placeHolder}
               onChange = {this.props.onChange}
               onBlur={this.placeHolderChange} 
               onFocus={this.placeHolderChange}
@@ -38,14 +38,14 @@ class DateBox extends React.Component {
 
 
 DateBox.defaultProps = {
-  placeholder: '',
+  placeHolder: '',
   disabled:false,
   onChange:null,
   minDate:'1/1/1',
 };
 
 DateBox.propTypes = {
-  placeholder: PropTypes.string,
+  placeHolder: PropTypes.string,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
   minDate: PropTypes.string

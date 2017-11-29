@@ -1,21 +1,22 @@
 import 'whatwg-fetch';
+import * as types from '../constants/ActionTypes'
 
 export const loadingError = e => {
   return {
-    type: 'LOADING_ERROR',
+    type: types.LOADING_ERROR,
     data: e,
   }
 }
 
 export const dataLoading = val => {
   return {
-    type: 'LOADING_DATA',
+    type: types.LOADING_DATA,
     status: val,
   }
 }
 export const dataLoaded = text => {
   return {
-    type: 'LOADED_DATA',
+    type: types.LOADED_DATA,
     data: text,
   }
 }
@@ -34,19 +35,45 @@ return {
 }
 export const setDepartureDate = val =>{
 return {
-    type: 'DEPARTURE_DATE',
+    type: types.DEPARTURE_DATE,
     val,
+  }
+}
+export const setRange = val =>{
+return {
+    type: types.RANGE,
+    val,
+  }
+}
+
+export const setFilterData = items => 
+{
+  return {
+    type: types.FILTER,
+    items,
   }
 }
 export const setReturnDate = val =>{
 return {
-    type: 'RETURN_DATE',
+    type: types.RETURN_DATE,
     val,
+  }
+}
+export const setTab = val => {
+  return {
+    type: types.SET_TAB,
+    val
   }
 }
 export const setPassengers = val =>{
 return {
     type: 'PASSENGERS',
+    val,
+  }
+}
+export const submitClicked = val =>{
+return {
+    type: types.SUBMIT,
     val,
   }
 }

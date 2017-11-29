@@ -24,7 +24,7 @@ class InputControl extends React.Component {
     return (
       <input 
         type={type}
-        placeHolder ={placeHolder}
+        placeholder ={placeHolder}
         onChange ={onChange}
         onBlur= {onBlur}
      
